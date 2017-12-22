@@ -1,0 +1,22 @@
+<form action="https://notify/mailer/mohamed.ezzarghili@gmail.com/" id="form" method="POST">
+                                <ul class="contacts-inputs">
+                                    <li class="contacts-item">
+                                        <label for="full-name" class="contacts-label">Full Name</label>
+                                        <!-- This input is required -->
+                                        <input name="fullname" id="full-name" class="contacts-input form-control" data-validation="required" type="text">
+                                    </li>
+                                    <li class="contacts-item">
+                                        <label for="email" class="contacts-label">Email</label>
+                                        <!-- This input should be filled with a valid email and it's required -->
+                                        <input name="email" id="email" class="contacts-input form-control" data-validation="required email" type="email">
+                                    </li>
+                                    <input name="_ignore" style="display:none" type="text">
+                                    <input name="_next" style="display:none" value="http://blog.ezzarghili.com" type="text">
+                                    <li class="contacts-item">
+                                        <label for="message" class="contacts-label">Message</label>
+                                        <!-- This input is required -->
+                                        <textarea id="message" name="message" class="contacts-input form-control" data-validation="required"></textarea>
+                                    </li>
+                                </ul>
+                                <button class="button blue full">Send Message</button>
+                            </form>
