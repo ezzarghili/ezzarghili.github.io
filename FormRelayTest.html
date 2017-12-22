@@ -1,22 +1,124 @@
-<form action="https://formrelay.notify.ma/mailer/support@xor.ma/" id="form" method="POST">
-                                <ul class="contacts-inputs">
-                                    <li class="contacts-item">
-                                        <label for="full-name" class="contacts-label">Full Name</label>
-                                        <!-- This input is required -->
-                                        <input name="fullname" id="full-name" class="contacts-input form-control" data-validation="required" type="text">
-                                    </li>
-                                    <li class="contacts-item">
-                                        <label for="email" class="contacts-label">Email</label>
-                                        <!-- This input should be filled with a valid email and it's required -->
-                                        <input name="email" id="email" class="contacts-input form-control" data-validation="required email" type="email">
-                                    </li>
-                                    <input name="_ignore" style="display:none" type="text">
-                                    <input name="_next" style="display:none" value="http://blog.ezzarghili.com" type="text">
-                                    <li class="contacts-item">
-                                        <label for="message" class="contacts-label">Message</label>
-                                        <!-- This input is required -->
-                                        <textarea id="message" name="message" class="contacts-input form-control" data-validation="required"></textarea>
-                                    </li>
-                                </ul>
-                                <button class="button blue full">Send Message</button>
-                            </form>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async defer src="https://www.googletagmanager.com/gtag/js?id=UA-108800333-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-108800333-1');
+    </script>
+    <script type="text/javascript">
+        function send() {
+            var link = "https://formrelay.notify.ma/mailer/"+document.getElementById("_linkTarget").value + "/"
+            document.getElementById("linkLabel").innerText = link          
+            console.log(document.forms[0], link)
+            document.forms[0].action = link
+        }
+    </script>
+</head>
+
+<body>
+    <style type="text/css">
+        body {
+            font-family: "Roboto, helvetica, arial, sans-serif";
+        }
+
+        .grid {
+            display: grid;
+            /*grid-template-columns: [full-start] 200px [content-start]  [content-end]  [full-end];*/
+            grid-gap: 1rem;
+            grid-template-areas: "header header header" "a content b" "footer footer footer";
+            grid-template-rows: 1fr auto auto;
+            /*place-items: center;*/
+        }
+
+        .cell-header {
+            grid-area: header;
+            background: yellow;
+            grid-row: auto;
+
+        }
+
+        .cell-footer {
+            grid-area: footer;
+            background: yellow;
+
+        }
+
+        .cell {
+            grid-area: content;
+            background: #f6f6f6;
+            text-align: center;
+            border-radius: 3px;
+            border: 1px solid #d3d3d3;
+        }
+
+        .foot-note {
+            font-family: "Roboto, helvetica, arial, sans-serif";
+            font-size: 11px;
+            font-weight: 400;
+            color: #7e7e7e;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .foot-note a {
+            color: #9b9b9b;
+            text-decoration: none;
+        }
+
+        .foot-note a:hover {
+            color: #cccbcb;
+        }
+
+        .small-4 {
+            grid-column: span 4;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        form .g-recaptcha {
+            display: inline-block;
+        }
+
+        .logo {
+            border-radius: 3px;
+            border: 1px solid #d3d3d3;
+            margin-top:5px;
+        }
+
+        @media screen and (max-width: 60em) {
+            .grid {
+                grid-template-areas: "header header header" "content content content" "footer footer footer";
+
+            }
+        }
+    </style>
+    <div class="grid">
+        <div class="cell-header">
+        </div>
+        <div class="cell">
+            <img class="logo" src="data:image/png;base64,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" width="32" height="32"/>    
+            <h4 style="margin-top:1px;margin-bottom:3px; color:rgb(218, 101, 5)">Form Relay Contact form Test</h4><br/><br/>
+            <form action="" method="POST">
+                <p style="margin-top:1px;">Please put your email here <input id="_linkTarget" type="email" required> to setup the target email for the contact form.</p>
+                <p><strong>form link: </strong><span id="linkLabel"></span></p>
+                <input style="margin:3px;width:200px" type="text" name="fullname" placeholder="Name" required><br/>
+                <input style="margin:3px;width:200px" type="email" name="email" placeholder="Email" required><br/>
+                <textarea style="margin:3px;width:200px" name="message" placeholder="Message" required></textarea><br/>
+                <input type="submit" value="Send" onClick="send()" />
+            </form>
+            <span class="foot-note">Powered by
+                <a href="https://notify.ma">notify.ma</a>, please read our
+                <a href="#">privacy policy</a>
+            </span>
+        </div>
+        <div class="cell-footer">
+        </div>
+    </div>
+</body>
+
+</html>
